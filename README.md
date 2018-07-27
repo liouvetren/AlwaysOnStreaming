@@ -1,7 +1,7 @@
 # ElasticSparkOnKubernetes
 The project aims to build an autoscaling spark streaming cluster on Kunbernetes to provide a more granular resource management. A live dashboard will be built on this cluster to identify real-time toxic twitters.
 ## Why am I doing this?
-As company grows, streaming data processing is 
+Company grows, day/night data volume change
 ## Data
 Historic twitter data as a stream
 ## Pipeline
