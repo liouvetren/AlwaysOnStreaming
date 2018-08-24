@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: spark-shuffle-service
+  namespace: spark
+  labels:
+    app: spark-shuffle-service
+    spark-version: 2.2.0
+spec:
+  template:
+    metadata:
+      labels:
+        app: spark-shuffle-service
+        spark-version: 2.2.0
+    spec:
+      volumes:
+        - name: temp-volume
+          hostPath:
+            path: '/tmp'
+      containers:
+        - name: shuffle
+          image: kubespark/spark-shuffle:v2.2.0-kubernetes-0.5.0
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - mountPath: '/tmp'
+              name: temp-volume
+
+          resources:
+             requests:
+               cpu: "200m"
+             limits:
+               cpu: "200m"

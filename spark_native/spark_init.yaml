@@ -1,0 +1,50 @@
+# python producer from 
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: spark-init
+  namespace: spark
+spec:
+  selector:
+    matchLabels:
+      app: spark-init
+  replicas: 1
+  template:
+    metadata:
+      name: spark-init
+      labels:
+        app: spark-init
+    spec:
+      serviceAccountName: spark
+      containers:
+      - name: spark-init
+        image: kubespark/spark-init:v2.2.0-kubernetes-0.5.0
+        resources:
+          requests:
+            cpu: 200m
+            memory: 1024Mi
+          limits:
+            cpu: 200m
+            memory: 1024Mi
+        
+        # readinessProbe:
+        #   exec:
+        #     command:
+        #     - cat
+        #     - /tmp/healthy
+        #   initialDelaySeconds: 5
+        #   periodSeconds: 5
+        command:
+        - sh
+        - -c
+        - "exec tail -f /dev/null"
+        # command: 
+        # - python
+        # - /app/app.py
+        # - s3://data-pool-liouvetren
+        # - 2017/12/22/00/00
+        # - 2017/12/22/00/02
+        # - kafka.kafka:9092
+        # - twitterdata
+        # - "0.001"
+# python /twitterproducer/app.py s3://data-pool-liouvetren 2017/12/22/00/00 2017/12/22/01/00 kafka.kafka:9092 twitterdata 

@@ -1,0 +1,5 @@
+# git ignore
+.terraform/
+data/
+tf/
+terraform.tf*
