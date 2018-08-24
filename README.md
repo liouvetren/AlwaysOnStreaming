@@ -1,23 +1,10 @@
-# ElasticSparkOnKubernetes
+# AlwaysOnStreaming
 The project aims to build an autoscaling spark streaming cluster on Kunbernetes to provide a more granular resource management. A live dashboard will be built on this cluster to identify real-time toxic twitters.
 ## Why am I doing this?
 Company grows, day/night data volume change
 ## Data
-Historic twitter data as a stream
+Historic twitter data as a stream (python client Kafka producer)
 ## Pipeline
-
-Standard kafka-spark-db-web set up.
-DB is used for storing data for dashboard query.
-
+![scheme](https://github.com/liouvetren/alwaysonstreaming/blob/master/resources/scheme.png)
 ## Monitoring
-CPU usage, Process rate, Mem usage, Input Hz, throughput Hz, etc.
-
-## WebUI (Dashboard)
-Sentiment Analysis
-Hot Hashtag
-Toxic twitter Percentage 
-
-## Backup Plan
-Not enough data to max out Spark?
-* Multiple dataset by 10
-* Produce seudo twitter data
+![monitoring](https://github.com/liouvetren/alwaysonstreaming/blob/master/resources/monitor.png)
